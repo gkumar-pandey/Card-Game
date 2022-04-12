@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('./5120953.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+
+       
+}
+.container {
+    border: 1px solid rgb(0, 255, 55);
+    border-radius: 5px;
+    min-height: 98vh;
+    width: 600px;
+    /* padding: 1rem;  */
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+button {
+    background-color: yellow;
+    padding: 5px;
+    font-size: 20px;
+    width: 100%;
+}
+
+.card-slot {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 160px;
+    height: calc(160px *(7/5));
+}
+.card-slot:nth-child(1){
+    margin-bottom: 30px;
+}
+.card-img{
+    width: 100%;
+    height: 100%;
+}
+.win-text {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+.remaining-card {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    /* border: 1px solid red; */
+}
+#new-deck {
+    width: 30%;
+}
+.remaining-card p{
+    margin-left: 5px;
+    color: #fff;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: 400;
+}
