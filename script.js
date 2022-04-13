@@ -1,11 +1,27 @@
 const DeckBtn = document.getElementById('new-deck');
+let computerScore = 0;
+const computerScoreEle = document.querySelector('.computerScore')
+let yourScore =0;
+const yourScoreEle = document.querySelector('.yourscore')
 let DecId;
 const drawCardBtn = document.querySelector('#draw-card');
 const cardSlot = document.querySelectorAll('.card-slot')
 const winnerText = document.querySelector('.win-text');
 const remainingCard = document.getElementById('remining-card-text')
+const GameOverMsg = document.getElementById('shuffle-after-game-over')
 
- 
+function Winner(computerScore, playerScore){
+    if(computerScore>playerScore){
+        winnerText.textContent = `You Lose `;
+    }
+    else if(computerScore<playerScore){
+        winnerText.textContent = `You Win `;
+    }
+    else{
+        winnerText.textContent = `Tie`
+    }
+
+}
 
 function determineWhoWin(card1,card2){
     const cardValueOptions= ['2','3','4','5','6','7','8','9','10','JACK','QUEEN','KING','ACE']
@@ -15,13 +31,17 @@ function determineWhoWin(card1,card2){
     const card2IndexValue = cardValueOptions.indexOf(card2)
 
     if(card1IndexValue > card2IndexValue){
-        return 'You Lose !!!!';
+        computerScore++;
+        computerScoreEle.textContent = `Computer Score: ${computerScore}`
+        // return 'You Lose !!!!';
     }
     else if(card1IndexValue<card2IndexValue){
-        return 'You Win !!'
+        yourScore++;
+        yourScoreEle.textContent = `Your Score: ${yourScore}`
+        // return 'You Win !!'
     }
     else{
-        return "Tie !!"
+        // return "Tie !!"
     }
     
 }
@@ -51,10 +71,16 @@ drawCardBtn.addEventListener('click', () => {
         const card2Value=data.cards[1].value;
         
         const winner = determineWhoWin(card1Value,card2Value);
-        winnerText.textContent = winner;
+        // winnerText.textContent = winner;
         if(cardLeft===0){
-            
+           drawCardBtn.disabled = true; 
+           drawCardBtn.style.backgroundColor = 'red'
+           drawCardBtn.style.color = '#fff'
+           drawCardBtn.innerText = `Card Finish`
+           Winner(computerScore,yourScore);
+           GameOverMsg.innerText = `For Play Again Shuffle the Deck`
         }
+      
     })
 
 
